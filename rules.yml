@@ -1,0 +1,5 @@
+# Reglas avanzadas de moderación IA; desactivadas por defecto.
+ai-moderation:
+  enabled: false
+  review-only: true
+  cooldown-seconds: 15

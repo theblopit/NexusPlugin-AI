@@ -1,0 +1,8 @@
+# Ejemplo: las palabras generan strikes. Las primeras dos solo advierten; desde 3 sanciona.
+moderation:
+  enabled: true
+  moderator-name: Nexsus
+  strike-words: [insulto_ejemplo]
+  warn-each: true
+  punish-at: 3
+  punish-command: "warn %jugador% Reincidencia en chat"

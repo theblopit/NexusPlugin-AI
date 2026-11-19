@@ -1,0 +1,123 @@
+active-provider: GEMINI
+providers:
+  gemini:
+    api-key: ""
+    model: gemini-3.6-flash
+  openai:
+    api-key: ""
+    model: gpt-4o-mini
+    base-url: https://api.openai.com/v1/chat/completions
+  custom:
+    api-key: ""
+    model: llama-3.3-70b-versatile
+    base-url: https://api.groq.com/openai/v1/chat/completions
+  groq:
+    api-key: ""
+    model: llama-3.3-70b-versatile
+    base-url: https://api.groq.com/openai/v1/chat/completions
+  openrouter:
+    api-key: ""
+    model: google/gemini-2.0-flash-001
+    base-url: https://openrouter.ai/api/v1/chat/completions
+  deepseek:
+    api-key: ""
+    model: deepseek-chat
+    base-url: https://api.deepseek.com/chat/completions
+  hyperapi:
+    api-key: ""
+    model: default
+    base-url: ""
+api-fallback-order: [groq, openrouter, deepseek, openai, custom, hyperapi]
+identity:
+  name: Nexsus
+  prefix: "&b[Nexsus] &f"
+  personality: "breve, amable y prudente"
+command-blocker:
+  enabled: false
+  commands: [plugins, pl, bukkit:plugins, version, ver]
+  denied-message: "&cNo tienes permiso para ese comando."
+chat:
+  prefixes: []
+  mentions-trigger: false
+  silent-moderation: false
+  moderation-notify-permission: nexusai.admin
+moderation:
+  enabled: true
+  cancel-insults: true
+  insult-words: [idiota, imbecil, estupido, tonto, inutil, basura, mierda]
+  warn-message: "&cNexusAI: evita insultar. Advertencia %count%."
+  staff-alerts: true
+  staff-permission: nexusai.moderation
+  spam:
+    enabled: true
+    max-identical-messages: 3
+    window-seconds: 8
+  ai-detection:
+    enabled: false
+    cooldown-seconds: 10
+prompts:
+  profiles:
+    ayuda: "Responde como ayudante del servidor Minecraft. Sé breve, amable y no inventes comandos del servidor."
+    reglas: "Explica las políticas de Drakense con neutralidad. No decidas culpabilidad ni ejecutes sanciones."
+    construccion: "Da consejos prácticos de construcción en Minecraft, en español y en pasos breves."
+system-prompt: |-
+  Eres NexusAI, asistente del servidor Drakense. Responde en español de forma breve y respetuosa. No inventes reglas, resultados ni hechos. La moderación es orientativa: no declares culpabilidad ni propongas sanciones automáticas basadas solo en una sospecha. Las etiquetas de acción solo se consideran señales para revisión humana.
+
+  POLÍTICAS OFICIALES DRAKENSE
+  OBJETIVO DE LA COMUNIDAD: Drakense busca ofrecer un espacio seguro, organizado y agradable. Al participar en los canales o servidores de Minecraft, se aceptan estas políticas sin importar rango o antigüedad. El desconocimiento no exime su cumplimiento.
+  1. RESPETO Y CONVIVENCIA: Prohibido insultar, humillar, acosar, ataques personales, provocar discusiones, hostigar, amenazas, chantajes, discriminación, burlas malintencionadas, campañas de acoso, fomentar odio/violencia o usar datos personales para perjudicar.
+  2. DOXEO Y PRIVACIDAD: Estrictamente prohibido publicar/difundir información personal sin autorización (direcciones, teléfonos, documentos, contraseñas, correos), amenazar con revelar datos, intentar descubrir identidades reales con fines maliciosos, compartir capturas privadas para perjudicar o intentar acceder a cuentas ajenas.
+  3. CONTENIDO NO APROPIADO: Prohibido NSFW, contenido sexualmente explícito, pornografía, gore, material para incomodar deliberadamente, contenido ilegal, violencia, odio, discriminación o contenido perturbador.
+  4. TEMAS CONTROVERTIDOS: Evitar discusiones sobre política, religión, conflictos sociales altamente polarizados o debates destinados a generar enfrentamientos.
+  5. SPAM, FLOOD Y USO DE CANALES: Prohibido mensajes repetitivos, flood, abusar de menciones/Staff, usar canales incorrectos, abusar de comandos de bots, saturar con archivos o sistemas automatizados de spam.
+  6. MENCIONES Y PINGS: Prohibido abusar de @everyone/@here, menciones repetitivas para molestar o mencionar al Staff sin razón válida.
+  7. PUBLICIDAD Y PROMOCIONES: Prohibido promocionar sin autorización previa de los Owners: Discord, YouTube, Twitch, TikTok, Instagram, redes sociales, otros servidores de Minecraft, comunidades externas, tiendas, enlaces de invitación o códigos de referido (incluyendo por mensaje privado).
+  8. CUENTAS Y SEGURIDAD: Prohibido robar o acceder a cuentas ajenas, pedir/compartir contraseñas, phishing, enlaces fraudulentos, suplantar identidad o hacerse pasar por Staff, o distribuir archivos maliciosos.
+  9. MINECRAFT — JUEGO LIMPIO: Prohibido cualquier cliente, mod, programa o método que dé ventaja injusta: Hacks, Cheats, KillAura, Aimbot, Reach, Fly, Speed, NoFall, X-Ray, ESP, Tracers, AutoClicker, TriggerBot, AimAssist no permitido, Velocity, AntiKnockback, FastPlace, FastBreak, Scaffold, Jesus, Step, InventoryMove (si está prohibido), Freecam, Baritone, macros, bots, scripts, automatizaciones externas o evasión de anticheat.
+  10. TEXTURAS, MODS Y CLIENTES PERMITIDOS: Solo se permiten mods/shaders/resource packs autorizados por la modalidad. Si da ventaja injusta, está prohibido aunque no esté en la lista. En caso de duda, consultar al Staff antes de usar.
+  11. AUTOMATIZACIÓN Y MACROS: Prohibido automatizar acciones manuales mediante macros, scripts, bots, autoclick, repetición automática, automatización de farmeo o de combate.
+
+  Si detectas un posible caso, devuelve una explicación neutral. Puedes añadir al final [ACTION:WARN], [ACTION:MUTE] o [ACTION:KICK] como sugerencia para revisión; nunca afirmes que la acción ya se ejecutó.
+automation:
+  action-tags:
+    WARN: "tell %player% &eRevisa las normas de Drakense."
+    MUTE: "tell %player% &cCaso enviado al staff para revisión."
+    KICK: "tell %player% &cCaso enviado al staff para revisión."
+  automation-rules:
+    - name: publicidad
+      trigger-type: CHAT_REGEX
+      condition: "(?i)(discord\\.gg|https?://|\.com\\b)"
+      ask-ai: false
+      actions:
+        - "[MESSAGE] &cNo se permite publicidad sin autorización."
+    - name: bienvenida
+      trigger-type: PLAYER_JOIN
+      condition: ""
+      ask-ai: false
+      actions:
+        - "[MESSAGE] &a¡Bienvenido, %player%!"
+    - name: revisar_spam
+      trigger-type: CHAT_CONTAINS
+      condition: "spamtriggerdemo"
+      ask-ai: true
+      ai-prompt-override: "Evalúa el contexto sin decidir culpabilidad; orienta al staff."
+      actions:
+        - "[MESSAGE] &eRevisión: %ai_response%"
+    - name: salida
+      trigger-type: PLAYER_QUIT
+      condition: ""
+      ask-ai: false
+      actions:
+        - "[BROADCAST] &7%player% salió del servidor."
+    - name: comandos_privados
+      trigger-type: COMMAND_REGEX
+      condition: "(?i)^/(?:tell|msg|w)\\b.*"
+      ask-ai: false
+      actions:
+        - "[MESSAGE] &7Comando privado detectado."
+    - name: ejemplo_tag
+      trigger-type: AI_TAG_ACTION
+      condition: "WARN"
+      ask-ai: false
+      actions:
+        - "[MESSAGE] &eEl staff revisará este mensaje."

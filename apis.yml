@@ -1,0 +1,10 @@
+# Las claves reales se configuran en /nexsus setkey y se guardan en config.yml.
+priority: [gemini, groq, openrouter, deepseek, openai, hyperapi, custom]
+providers:
+  gemini: { enabled: true, model: gemini-3.6-flash, endpoint: "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent", format: gemini }
+  groq: { enabled: false, model: llama-3.3-70b-versatile, endpoint: "https://api.groq.com/openai/v1/chat/completions", format: openai }
+  openrouter: { enabled: false, model: google/gemini-2.0-flash-001, endpoint: "https://openrouter.ai/api/v1/chat/completions", format: openai }
+  deepseek: { enabled: false, model: deepseek-chat, endpoint: "https://api.deepseek.com/chat/completions", format: openai }
+  openai: { enabled: false, model: gpt-4o-mini, endpoint: "https://api.openai.com/v1/chat/completions", format: openai }
+  hyperapi: { enabled: false, model: default, endpoint: "", format: openai }
+  custom: { enabled: false, model: llama-3.3-70b-versatile, endpoint: "https://api.groq.com/openai/v1/chat/completions", format: openai }

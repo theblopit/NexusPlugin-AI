@@ -1,0 +1,26 @@
+name: NexusAI
+version: 3.3.0
+main: com.drakense.nexusai.NexusAI
+api-version: '1.13'
+author: Drakense
+description: Helper, moderation assistant and configurable automation engine.
+softdepend: [ExyliaLib, ExyliaLobby, ExyliaClans, ExyliaDisplays, ExyliaGraves, ExyliaPlayerVaults, ExyliaSimpleCommands, ExyliaKillCam, ExyliaMedia, LuckPerms, PlaceholderAPI, Essentials, WorldGuard, LiteBans]
+permissions:
+  nexsus.admin:
+    description: Bypass total de todos los controles de Nexsus
+    default: op
+commands:
+  nexsus:
+    aliases: [nexus]
+    description: Administración de Nexsus
+    usage: /nexsus [menu|ai|access|commandblocker|reload|clean|guide|info|setkey]
+  nexsusai:
+    aliases: [nexusai]
+    description: Consulta privada de Nexsus AI
+    usage: /nexsusai <pregunta>
+  ai:
+    description: Ask NexusAI a question
+    usage: /ai <mensaje>
+  nexus-perms:
+    description: Manage Nexsus internal access
+    usage: /nexus-perms <add|remove|list>

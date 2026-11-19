@@ -1,0 +1,8 @@
+owners: []
+players: {}
+access:
+  roles:
+    admin: { triggers: true, apis: true, faq: true, logs: true, moderation: true }
+    staff: { staffchat: true, faq: true }
+    helper: { faq: true }
+  users: {}
